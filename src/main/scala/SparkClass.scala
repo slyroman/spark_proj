@@ -16,8 +16,9 @@ object SparkClass extends App {
         .master("local[*]")
         .config("spark.testing.memory", "471859200")
         .getOrCreate()
-
     }
+
+    spark.sparkContext.setLogLevel("ERROR")
 
     def sc = spark.sparkContext
 
@@ -35,6 +36,10 @@ object SparkClass extends App {
       .option("inferSchema", "true")
       .csv(sorce_file_dict)
     //offenseCodes.show(1000, false)
+
+    val offenseCodes_ = offenseCodes
+      .dropDuplicates("code")
+      .orderBy("code")
 
     import spark.implicits._
     import org.apache.spark.sql.functions._
@@ -60,14 +65,14 @@ object SparkClass extends App {
     import org.apache.spark.sql.expressions.Window
     import org.apache.spark.sql.functions.broadcast
 
-    val offenseCodesBroadcast = broadcast(offenseCodes)
+    val offenseCodesBroadcast = broadcast(offenseCodes_)
 
     // Window definition
     val w = Window.partitionBy($"DISTRICT").orderBy(desc("count"))
 
     var t2 = crimeFacts_
       .join(offenseCodesBroadcast, $"CODE" === $"OFFENSE_CODE")
-      .withColumn("NAME_GROUP", split(col("NAME"), "\\-").getItem(0))
+      .withColumn("NAME_GROUP", split(col("NAME"), "\\ - ").getItem(0))
       .groupBy($"DISTRICT", $"NAME_GROUP")
       .agg(
         count("INCIDENT_NUMBER").as("count")
