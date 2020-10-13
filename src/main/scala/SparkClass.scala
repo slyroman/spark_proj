@@ -92,6 +92,7 @@ object SparkClass extends App {
         $"lat",
         $"lng"
       )
+      .orderBy($"DISTRICT".asc)
     final_df.show(false)
 
     //final_df.write.mode(SaveMode.Overwrite).format("parquet").saveAsTable("boston_crimes_final.parquet")
