@@ -1,0 +1,9 @@
+[0m[[0m[0mdebug[0m] [0m[0mPackaging /Users/apple/IdeaProjects/spark_proj/target/scala-2.11/spark_proj_2.11-0.1.jar ...[0m
+[0m[[0m[0mdebug[0m] [0m[0mInput file mappings:[0m
+[0m[[0m[0mdebug[0m] [0m[0m	SparkClass$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /Users/apple/IdeaProjects/spark_proj/target/scala-2.11/classes/SparkClass$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	SparkClass$delayedInit$body.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /Users/apple/IdeaProjects/spark_proj/target/scala-2.11/classes/SparkClass$delayedInit$body.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	SparkClass.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /Users/apple/IdeaProjects/spark_proj/target/scala-2.11/classes/SparkClass.class[0m
+[0m[[0m[0mdebug[0m] [0m[0mDone packaging.[0m
