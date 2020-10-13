@@ -21,7 +21,7 @@ object SparkClass extends App {
 
     }
 
-    def sc = spark.sparkContext 
+    def sc = spark.sparkContext
 
     val crimeFacts = spark
       .read
@@ -47,8 +47,7 @@ object SparkClass extends App {
 
     var t1 = crimeFacts_
       .groupBy($"DISTRICT", $"YEAR", $"MONTH")
-      //concat_ws(",", collect_list("COL2")) as "concat",
-      //size(collect_list("COL2")) as "size") // <-- size
+
       .agg(
         count($"INCIDENT_NUMBER").as("crimes_total"),
 
@@ -67,8 +66,7 @@ object SparkClass extends App {
 
     //t1.show(false)
 
-    import spark.implicits._
-    import org.apache.spark.sql.functions._
+
     import org.apache.spark.sql.expressions.Window
     import org.apache.spark.sql.functions.broadcast
 
